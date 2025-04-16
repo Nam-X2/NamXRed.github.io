@@ -1,0 +1,86 @@
+-- Tạo GUI
+local ScreenGui = Instance.new("ScreenGui")
+local NotificationFrame = Instance.new("Frame")
+local NotificationLabel = Instance.new("TextLabel")
+local MenuFrame = Instance.new("Frame")
+local MenuButton = Instance.new("TextButton")
+local OptionsFrame = Instance.new("Frame")
+local FarmCapButton = Instance.new("TextButton")
+local FarmDaoButton = Instance.new("TextButton")
+
+-- Cấu hình ScreenGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Thông báo màu đỏ đen
+NotificationFrame.Parent = ScreenGui
+NotificationFrame.BackgroundColor3 = Color3.new(1, 0, 0)
+NotificationFrame.BackgroundTransparency = 0.2
+NotificationFrame.Size = UDim2.new(0.6, 0, 0.6, 0)
+NotificationFrame.Position = UDim2.new(0.2, 0, 0.2, 0)
+
+NotificationLabel.Parent = NotificationFrame
+NotificationLabel.Size = UDim2.new(1, 0, 1, 0)
+NotificationLabel.Text = "Chào Bạn Đến NamX"
+NotificationLabel.TextColor3 = Color3.new(0, 0, 0)
+NotificationLabel.BackgroundTransparency = 1
+NotificationLabel.Font = Enum.Font.SourceSansBold
+NotificationLabel.TextScaled = true
+
+-- Tự động xóa thông báo sau 5 giây
+task.delay(5, function()
+    NotificationFrame:Destroy()
+end)
+
+-- Menu
+MenuFrame.Parent = ScreenGui
+MenuFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+MenuFrame.BackgroundTransparency = 0.2
+MenuFrame.Size = UDim2.new(0.3, 0, 0.3, 0)
+MenuFrame.Position = UDim2.new(0.35, 0, 0.7, 0)
+
+MenuButton.Parent = MenuFrame
+MenuButton.Size = UDim2.new(1, 0, 0.2, 0)
+MenuButton.Text = "Chung"
+MenuButton.TextColor3 = Color3.new(1, 1, 1)
+MenuButton.BackgroundTransparency = 0.5
+MenuButton.Font = Enum.Font.SourceSansBold
+MenuButton.TextScaled = true
+
+-- Các tùy chọn trong menu
+OptionsFrame.Parent = MenuFrame
+OptionsFrame.Size = UDim2.new(1, 0, 0.8, 0)
+OptionsFrame.Position = UDim2.new(0, 0, 0.2, 0)
+OptionsFrame.Visible = false
+
+FarmCapButton.Parent = OptionsFrame
+FarmCapButton.Size = UDim2.new(1, 0, 0.5, 0)
+FarmCapButton.Text = "Farm Cấp"
+FarmCapButton.TextColor3 = Color3.new(1, 1, 1)
+FarmCapButton.BackgroundTransparency = 0.5
+FarmCapButton.Font = Enum.Font.SourceSansBold
+FarmCapButton.TextScaled = true
+
+FarmDaoButton.Parent = OptionsFrame
+FarmDaoButton.Size = UDim2.new(1, 0, 0.5, 0)
+FarmDaoButton.Position = UDim2.new(0, 0, 0.5, 0)
+FarmDaoButton.Text = "Farm Hết Đảo"
+FarmDaoButton.TextColor3 = Color3.new(1, 1, 1)
+FarmDaoButton.BackgroundTransparency = 0.5
+FarmDaoButton.Font = Enum.Font.SourceSansBold
+FarmDaoButton.TextScaled = true
+
+-- Hiển thị hoặc ẩn menu khi bấm vào nút "Chung"
+MenuButton.MouseButton1Click:Connect(function()
+    OptionsFrame.Visible = not OptionsFrame.Visible
+end)
+
+-- Các hành động khi bấm vào nút "Farm Cấp" và "Farm Hết Đảo"
+FarmCapButton.MouseButton1Click:Connect(function()
+    print("Farm Cấp được chọn!")
+    -- Thêm logic cho "Farm Cấp" tại đây
+end)
+
+FarmDaoButton.MouseButton1Click:Connect(function()
+    print("Farm Hết Đảo được chọn!")
+    -- Thêm logic cho "Farm Hết Đảo" tại đây
+end)
